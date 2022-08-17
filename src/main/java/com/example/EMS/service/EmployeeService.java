@@ -1,6 +1,5 @@
 package com.example.EMS.service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +20,6 @@ public interface EmployeeService {
 	
 	void deleteAllEmployee();
 		
-	Map<String, String> nameDeptMap();
+	Map<Integer, Map<String,String>> nameDeptMap();
 
 }

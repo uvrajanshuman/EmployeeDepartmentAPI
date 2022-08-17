@@ -35,10 +35,9 @@ public class EmployeeController {
 	
 	@GetMapping("/employees/{id}")
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable("id") int Id) throws ResourceNotFoundException{
-		Employee employee = employeeService.getEmployee(Id);
 		return ResponseEntity
 				.status(HttpStatus.OK)
-				.body(employee);
+				.body(employeeService.getEmployee(Id));
 	}
 	
 	@PostMapping("/employees")
@@ -51,7 +50,7 @@ public class EmployeeController {
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable("id") int Id, @Valid @RequestBody Employee employee) throws ResourceNotFoundException{
 		return ResponseEntity
-				.status(HttpStatus.CREATED)
+				.status(HttpStatus.OK)
 				.body(employeeService.updateEmployee(Id, employee));
 		
 	}
@@ -73,7 +72,7 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/employees/name-dept-map")
-	public ResponseEntity<Map<String,String>> getNameDeptMap(){
+	public ResponseEntity<Map<Integer, Map<String,String>>> getNameDeptMap(){
 		return ResponseEntity
 				.status(HttpStatus.OK)
 				.body(employeeService.nameDeptMap());

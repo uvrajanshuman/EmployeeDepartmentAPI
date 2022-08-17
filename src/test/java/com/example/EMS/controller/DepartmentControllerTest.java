@@ -1,18 +1,12 @@
 package com.example.EMS.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import org.json.JSONException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -40,6 +34,11 @@ class DepartmentControllerTest {
 	private DepartmentService departmentService;
 	
 	private DepartmentTestUtil testUtil;
+	
+	@BeforeEach
+	void setup() {
+		testUtil = new DepartmentTestUtil();
+	}
 
 	@Test
 	void getDepartmentById_Success() throws Exception {
@@ -61,7 +60,7 @@ class DepartmentControllerTest {
 	}
 	
 	@Test
-	void getAllDepartments_Success() throws Exception {
+	void getAllDepartments_success() throws Exception {
 		
 		List<Department> deptList = testUtil.DEPARTMENT_LIST;
 		

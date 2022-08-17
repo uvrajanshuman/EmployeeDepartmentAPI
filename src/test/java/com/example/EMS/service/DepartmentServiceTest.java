@@ -1,15 +1,16 @@
 package com.example.EMS.service;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +18,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import com.example.EMS.entity.Department;
 import com.example.EMS.exceptions.ResourceNotFoundException;
@@ -29,7 +29,6 @@ import util.DepartmentTestUtil;
 @ExtendWith(MockitoExtension.class)
 class DepartmentServiceTest {
 	
-	
 	@Mock
 	private DepartmentRepository departmentRepository;
 	
@@ -37,6 +36,11 @@ class DepartmentServiceTest {
 	private DepartmentServiceImpl deparmentService;
 	
 	private DepartmentTestUtil testUtil;
+	
+	@BeforeEach
+	void setup() {
+		testUtil = new DepartmentTestUtil();
+	}
 
 	@Test
 	void addDepartment_success() {

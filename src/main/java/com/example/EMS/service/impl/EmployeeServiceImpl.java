@@ -1,5 +1,6 @@
 package com.example.EMS.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -81,11 +82,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public Map<String, String> nameDeptMap() {
-		Map<String, String> map = employeeRepository.findAll()
+	public Map<Integer, Map<String,String>> nameDeptMap() {
+		Map<Integer, Map<String, String>> map = employeeRepository.findAll()
 			.stream()
-			.collect(Collectors.toMap(Employee::getName, e->e.getDepartment().getName()));
+			.collect(Collectors.toMap(Employee::getId, this::createNameDeptMap));
 		return map;
 	}
 
+	private Map<String, String> createNameDeptMap(Employee employee){
+		Map<String,String> map = new HashMap<>();
+		map.put(employee.getName(), employee.getDepartment().getName());
+		return map;
+	}
 }
