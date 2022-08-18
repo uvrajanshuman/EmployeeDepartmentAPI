@@ -1,6 +1,6 @@
 # Employee Department API
 
-A RESTFUL web service exposing various endpoints to perform CRUD operations on Employee and and corresponding Department.
+A RESTFUL web service exposing various endpoints to perform CRUD operations on Employee and the corresponding Department.
 
 The System is built with **Spring Boot** using the **Controller-Service-Repository** architecture.
 
